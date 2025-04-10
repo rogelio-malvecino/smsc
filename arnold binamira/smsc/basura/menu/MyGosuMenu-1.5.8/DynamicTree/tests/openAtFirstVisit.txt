@@ -1,0 +1,12 @@
+<div class="folder" id="a1">Node 1</div>
+<div class="folder" id="a2">Node 2</div>
+<div class="folder" id="a3">Node 3</div>
+
+var tree = new DynamicTree("tree");
+tree.init();
+if (!tree.cookie.get("tree-visited") && !tree.cookie.get("opened")) {
+    tree.open("a1");
+    tree.open("a2");
+    tree.open("a3");
+    tree.cookie.set("tree-visited", 1, 3600*24*365);
+}

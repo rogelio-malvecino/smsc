@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Content-Language" content="en" />
+    <title>Drop Menu 1 - Horizontal - Example 1 - MyGosuMenu</title>
+    <style type="text/css">
+	h1 { font-size: 24px; }
+    body {
+        font: 13px tahoma;
+        background: #ffffff;
+		margin: 1em 2em;
+		padding: 0em;
+    }
+    </style>
+    <link rel="stylesheet" type="text/css" href="example1.css" />
+    <script type="text/javascript" src="../ie5.js"></script>
+    <script type="text/javascript" src="DropMenu1.js"></script>
+</head>
+<body>
+
+<h1>Drop Menu 1 - Horizontal - Example 1</h1>
+
+    <table cellspacing="0" cellpadding="0" id="menu1" class="dm1">
+    <tr>
+        <td>
+            <a class="item1 left" href="example1.html">Home Page</a>
+        </td>
+        <td>
+            <a class="item1" href="javascript:void(0)">Solutions</a>
+            <div class="section">
+                <a class="item2" href="example1.html">Category One</a>
+                <a class="item2" href="example1.html">Category Two</a>
+                <a class="item2" href="example1.html">Category Three</a>
+                <a class="item2" href="example1.html">Category Four</a>
+                <a class="item2" href="example1.html">Category Five</a>
+                <a class="item2" href="example1.html">Category Six</a>
+                <a class="item2" href="example1.html">Category Seven</a>
+            </div>
+        </td>
+        <td>
+            <a class="item1" href="javascript:void(0)">Products</a>
+            <div class="section">
+                <a class="item2" href="example1.html">First Product</a>
+                <a class="item2" href="example1.html">Second Product</a>
+                <a class="item2" href="example1.html">Third Product</a>
+                <a class="item2" href="example1.html">Fourth Product</a>
+                <a class="item2" href="example1.html">Fifth Product</a>
+                <a class="item2" href="example1.html">Sixth Product</a>
+            </div>
+        </td>
+        <td>
+            <a class="item1" href="javascript:void(0)">Company</a>
+            <div class="section">
+                <a class="item2" href="example1.html">About our Company</a>
+                <a class="item2" href="example1.html">Careers</a>
+                <a class="item2" href="example1.html">Media Center</a>
+                <a class="item2" href="example1.html">News</a>
+            </div>
+        </td>
+        <td>
+            <a class="item1" href="example1.html">Contact Us</a>
+        </td>
+        <td>
+            <a class="item1" href="example1.html">Privacy Policy</a>
+        </td>
+        <td>
+            <a class="item1 right" href="example1.html">Help</a>
+            <div class="section">
+                <a class="item2" href="example1.html">Help blabla 1</a>
+                <a class="item2" href="example1.html">Help bleble 22</a>
+                <a class="item2" href="example1.html">Help bleble 3</a>
+                <a class="item2" href="example1.html">Help bleble 44444</a>
+            </div>
+        </td>
+    </tr>
+    </table>
+
+	<br />
+    <div><b>Project</b>: <a href="http://www.gosu.pl/MyGosuMenu/">MyGosuMenu</a></div>
+    <div><b>Menu type</b>: DropMenu1</div>
+	<p>
+		<b>Features</b>: <br />
+		- horizontal or vertical menu <br />
+		- can be positioned statically or absolutely <br />
+		- delay for showing/hiding menu (can be turned off by setting to 0) <br />
+		- position of submenus can be changed, so they can for example overflow parent elements <br />
+		- on the same page there can be many menus created <br />
+		- seperated into 3 layers: behaviour(javascript), structure(html), presentation(css) <br />
+		- search engine friendly <br />
+		- free for any use (BSD license) <br />
+	</p>
+	<p>
+		<b>Compatibility</b>:<br />
+		Tested and works great on: IE 5.0/5.5/6.0, Mozilla 1.4/1.7, Opera 7.11/7.23/7.51, Netscape 7.11, Firefox 0.7/0.8/0.9, Safari 1.2
+	</p>
+
+    <script type="text/javascript">
+    var dm1 = new DropMenu1('menu1');
+    dm1.position.top = -1;
+    dm1.init();
+    </script>
+
+</body>
+</html>

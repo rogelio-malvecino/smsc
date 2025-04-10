@@ -1,0 +1,242 @@
+<?php
+session_start(); 
+include ("datasource.php");		
+
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>Enterpise System</title>
+	<script language="JavaScript" src="JSeverwing.js"></script>
+	<script language="JavaScript">
+var ray={
+ajax:function(st)
+	{
+
+		this.show('load');
+	},
+show:function(el)
+	{
+		this.getID(el).style.display='';
+	},
+getID:function(el)
+	{
+		return document.getElementById(el);
+	}
+}
+	function Signing()
+		{
+			
+			var ajaxRequest = getAjaxRequest();
+			var mUserName = document.frmSignIn.UserName.value;
+			var mUserPassword = document.frmSignIn.UserPassword.value;
+			var mCompanyID = document.frmSignIn.CompanyID.options[document.frmSignIn.CompanyID.selectedIndex].value;
+			var mCompanyName = document.frmSignIn.CompanyID.options[document.frmSignIn.CompanyID.selectedIndex].text;
+
+			ajaxRequest.onreadystatechange = function()
+				{
+					if(ajaxRequest.readyState == 4)
+						{
+
+							var ajaxDisplay = document.getElementById('LoginTitleId').rows;
+							var y=ajaxDisplay[0].cells;
+							if (ajaxRequest.responseText=="Failed")
+								{
+								y[0].innerHTML = "Login " + ajaxRequest.responseText;
+								}
+							else
+								{
+									window.open('mainmenu.php','_parent');
+								}
+						}
+				}
+			
+			var param= "UserName=" + mUserName + "&UserPassword=" + mUserPassword + "&CompanyID=" +mCompanyID+"&CompanyName="+mCompanyName;
+			ajaxRequest.open("POST","Signing_ajax.php",true);
+			ajaxRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	     		ajaxRequest.send(param); 
+		}
+	</script>
+    
+    
+        
+    <style type="text/css">
+	
+	
+	.container
+	{
+	background-color:#999;
+	border:3px solid #999;
+	height:250px;
+	width:500px;
+	margin:0px auto;
+	-moz-border-radius: 1em;
+	margin-top:60px;
+	background-image:url(newbakimg/login_container.gif);
+	background-size:100% 100%;
+	}
+	.login_table{
+	margin:0px auto;
+	width:300px;
+	}
+	.login_input{
+	border:0px;
+	width:250px;
+	padding:5px;}
+	.login_div{
+	border:1px solid #000;
+	border-radius:5px;
+	background-color:#FFFFFF;
+
+	}
+	.login_table span{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	font-weight:bold;
+	color:#333;}
+	.login_select{
+	padding:6px;
+	border-radius:5px;
+	border:1px solid #CCCCCC;}
+	.login_table_two
+	{
+	width:500px;
+	margin:0px auto;
+	}
+	.login_table_two .submit
+	{
+	padding:8px;
+	width:100px;
+	border:1px solid #CCCCCC;
+	border-radius:4px;
+
+	background-image:url(newbakimg/buttonimg2.gif);
+	background-size:100% 100%;
+	color:#edebeb;
+	font-weight:bold;
+	font-size:15px;
+	}
+	.login_table_two .submit:hover{
+		background-image:url(newbakimg/buttonimg.gif);
+	background-size:100% 100%;
+	color:#edebeb;}
+	
+	.login_table_error{
+	width:500px;
+	margin:0px auto;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:18px;}
+	.logButton
+	{
+	
+		width:100px;
+		float:right;
+		margin-bottom:10px;
+	}
+	.logButton input
+	{
+		padding-left:10px;
+		padding-right:10px;
+		
+	}
+	
+	
+    </style>
+</head>
+<body>
+
+<br />
+<br />
+<br />
+<table class="login_table_error" name="LoginTitleName" id="LoginTitleId" >
+<tr >
+<td>
+Members Login ! 
+
+</td>
+</tr>
+</table>
+
+<br />
+<div class="container">
+
+<br />
+<div id="load" style="display:none;">Loading... Please wait</div>
+
+
+
+<form name="frmSignIn"  method="post" onsubmit="return ray.ajaxa()">
+
+<table class="login_table">
+<tr><td><span>Username</span></td></tr>
+    <tr><td>
+	<div class="login_div">
+	<input class="login_input" type="text" name="UserName" size="25" maxlength="15" placeholder='Enter username'/>
+	<img style="float:right;" src="newbakimg/usernameloginimg.jpeg" height="25" width="25"/>
+	</div>
+	</td></tr>
+<tr><td><span>Password</span></td></tr>
+	<tr><td>
+	<div class="login_div">
+	<input class="login_input" type="password" name="UserPassword" size="25" maxlength="15" placeholder='Enter password'/>
+	<img style="float:right;" src="newbakimg/passwordloginimg.jpeg" height="25" width="25"/>
+	</div>
+	
+	</td></tr>
+	<tr><td><span>Company Name</span></td></tr>
+	<tr><td><span><a href="system_backup.php">System Backup</span></td></tr>
+
+
+		
+	<tr>
+    <td>
+    <select class="login_select" name="Comapanyname" id="CompanyID" size="1">
+<?php
+error_reporting(E_ALL ^ E_NOTICE);
+
+$mResult = $mysqli->query("select * from company");
+					if (mysqli_num_rows($mResult) > 0)
+						{
+							while ($ado = $mResult->fetch_array(MYSQLI_BOTH))
+							{
+					
+							
+?>
+
+    <option value=<?php echo $ado["companyid"]?>><?php echo $ado["companyname"]?></option>
+<?php
+							}
+						}		
+?>	    
+	</select>
+    </td>
+    </tr>
+	
+	    <tr><td style="font-family:'Courier New', Courier, monospace;
+		font-size:14px;
+		color:#F90;" >
+        Sign-out properly to prevent user account locked!
+        </td></tr>
+	
+
+	
+    </table>
+
+
+	<div class="logButton"><input class="submit" type="button" value="Sign In" onClick="javascript:Signing();"/></div>
+	</div>
+	<!--container-->
+	
+	<table class="login_table_two">
+	    <tr><td></p></td><td align="right"></td></tr>
+	</table>
+	
+	
+	    </form>
+	
+	
+
+	
+     </body>
+</html>
+

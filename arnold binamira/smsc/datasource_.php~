@@ -1,0 +1,4 @@
+<?php 
+
+$mysqlcnnt = new mysqli("localhost", "root","misa_1127", "smsc_main"); 
+?>

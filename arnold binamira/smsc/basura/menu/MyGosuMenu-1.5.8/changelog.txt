@@ -1,0 +1,73 @@
+*** 1.5.8 ***
+
+  - added DynamicTree/tests/foldersAsLinks2.html
+
+*** 1.5.7 ***
+
+  - DynamicTree/example3.php added - generating tree using php & mysql
+
+*** 1.5.6 ***
+
+  - DropMenuX: fixed positioning submenu bug when window is resized
+
+*** 1.5.5 ***
+	
+  - DynamicTree fix: bug in ie6, changes in DynamicTree.css
+  
+*** 1.5.4 ***
+
+  Dynamic Tree:
+  - added setActive feature, see /tests/enableSetActive.html
+  - added openAll()
+
+*** 1.5.3 ***
+
+  - #1.5 DynamicTree, added an example with folders as links, see /1.5/tests/foldersAsLinks.html
+  - #1.3 ClickShowHideMenu, added an example that highlights active item, see /1.3/tests/highlightActive.html
+
+*** 1.5.2 ***
+
+  - #1.5 DynamicTreeBuilder, a bug that could affect you if you had more than 20 records in a tree when starting editing.
+
+*** 1.5.1 ***
+
+  - #1.1 menu works with selectboxes on IE6
+  - some bug fixes in #1.5 menu
+  - some updates in readmes
+
+*** 1.5.0 ***
+
+  - Added #1.5 menu, DynamicTree & DynamicTreeBuilder
+
+*** 1.4.1 ***
+
+  - Added support for IE 5.0 & IE 5.5 in #1.0 / #1.1 / #1.4 menus
+  - [js] fixed a bug that prevented #1.3 menu working on Konqueror
+  - [html] fixed a bug with positioning in example 2 of #1.0 and #1.1 menu that appeared
+    on some versions of IE6 (6.0.2600 on XP, 6.0.3790 on Windows Server 2003)
+
+*** 1.4.0 ***
+
+  - Fixed a bug in #1.0 menu that appeared on IE 5.5
+  - Added new #1.4 menu and 2 examples
+
+*** 1.3.5 ***
+  
+  - Fixed a bug in menu #1.3 that appeared on newest Mozilla 1.7 & Firefox 0.9
+  - updated /1.1/DropDownMenuX.txt
+
+*** 1.3.4 ***
+
+  - fixed a few bugs in #1.0 menu
+  - #1.1 menu has been rewritten, now it supports vertical menus, a few bugs has been fixed,
+    new features added.
+
+*** 1.3.3 ***
+
+  - #1.0 menu has been rewritten, a few bugs fixed, new features added, see /1.0/DropDownMenu1.txt for more info
+  - done some cleaning: file names etc
+
+*** 1.3.2 ***
+
+  - Added another example of #1.1 menu
+    See /1.1/menu2.html

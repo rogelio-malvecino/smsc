@@ -1,0 +1,430 @@
+/*
+@Continue by: ANGELO M. GARCIA
+@Date: August 29, 2012 8:17 A:M
+style for Everwing Enterprises
+*/
+
+body
+{
+background-image:url(newbakimg/bodybg2.gif);
+margin:0;
+padding:0;
+}
+
+div.container{
+background-image:url(images2/th.jpg);
+background-size:100% 100%;
+border:1px groove #CCCCCC;
+background-color:#FFFFFF;
+height:400px;
+width:400px;
+margin-top:10px;
+border-radius:10px;
+box-shadow:3px 3px 3px #999999;
+
+
+position:relative;
+animation:myfirst 5s;
+-moz-animation:myfirst 5s; /* Firefox */
+-webkit-animation:myfirst 5s; /* Safari and Chrome */
+background-color:
+
+
+
+}
+
+
+
+
+@keyframes myfirst
+{
+0%   {background:red; left:0px; top:0px;}
+25%  {background:yellow; left:200px; top:0px;}
+50%  {background:blue; left:200px; top:200px;}
+75%  {background:green; left:0px; top:200px;}
+100% {background:red; left:0px; top:0px;}
+}
+
+@-moz-keyframes myfirst /* Firefox */
+{
+0%   {background:red; left:0px; top:0px;}
+25%  {background:yellow; left:400px; top:500px;}
+50%  {background:blue; left:700px; top:400px;}
+75%  {background:green; left:0px; top:100px;}
+100% {background:red; left:0px; top:0px;-moz-transform:rotate(720deg);}
+}
+
+@-webkit-keyframes myfirst /* Safari and Chrome */
+{
+0%   {background:red; left:0px; top:0px;}
+25%  {background:yellow; left:400px; top:500px;}
+50%  {background:blue; left:700px; top:400px;}
+75%  {background:green; left:0px; top:100px;}
+100% {background:red; left:0px; top:0px;-moz-transform:rotate(720deg);}
+}
+
+
+
+
+
+div.container table tr td{
+height:60px;}
+div.container table tr td input{
+
+
+width:300px;
+padding:10px;
+font-size:18px;}
+
+div.container table tr td input.login{
+
+opacity:0.4;
+filter:alpha(opacity=40); /* For IE8 and earlier */
+}
+div.container table tr td input.login:hover{
+opacity:1.4;
+filter:alpha(opacity=40); /* For IE8 and earlier */
+}
+
+div.container table tr td select{
+
+opacity:0.4;
+filter:alpha(opacity=40); /* For IE8 and earlier */
+width:322px;
+padding:10px;
+font-size:18px;}
+
+div.container table tr td select:hover{
+opacity:1.4;
+filter:alpha(opacity=40); /* For IE8 and earlier */}
+
+
+div.container table tr td input.submit{
+
+background-image:url(images2/2.gif);
+background-size:100% 100%;
+
+font-size:24px;
+
+border-radius:10px;
+border:0;
+color:#FFFFFF;
+width:323px;
+height:60px;}
+
+div.container table tr td input.submit:hover{
+background-image:url(images2/1.gif);
+background-size:100% 100%;
+}
+div.table{
+background-image:url(images2/2.gif);
+background-size:100% 100%;
+width:100%;
+background-color:#333333;
+-moz-border-radius-topleft:10px;
+-moz-border-radius-topright:10px;
+height:60px;}
+div.footer{
+
+color:#FFFFFF;
+height:47px;
+font: .7em "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+#productForm
+{
+widht:100px;
+}
+#menulocationcontents
+{
+background-image:url(newbakimg/2.gif);
+font-size:11px;
+background-size:100% 100%;
+color:#FFFFFF;
+font-weight:bold;
+height:25px;
+font-family:Arial, Helvetica, sans-serif;
+width:100%;
+line-height:25px;
+text-indent:10px;
+}
+#actionButton
+{
+	display:block;
+	background-color:#060;
+	color:#FFF;
+	padding:8px;
+	width:50px;
+}
+a
+{
+	text-decoration:none;
+	color:#000;
+	font:Tahoma, Geneva, sans-serif;
+	size:9px;
+}
+
+#buttoncreate
+{
+	cursor:pointer;
+	background-color:#666;
+	border:1px solid #CCCCCC;
+	height:30px;
+	width:80px;
+	display:block;
+	border-radius:5px;
+	color:#000;
+	line-height:30px;
+	font-weight:bold;
+	font-size:12px;
+}
+
+#buttoncreatedetail
+{
+	cursor:pointer;
+	background-color:#666;
+	border:1px solid #CCCCCC;
+	height:20px;
+	width:50px;
+	display:block;
+	border-radius:5px;
+	color:#000;
+	line-height:20px;
+	font-weight:bold;
+	font-size:9px;
+}
+
+
+#buttoncreatedetail:hover
+{
+	color:#FFF;
+}
+.createcontainer
+{
+border-radius:10px;
+border:4px solid #333333;
+background:#CCC;
+float:left;
+padding:10px;
+}
+.createcontainerDetail
+{
+border-radius:10px;
+border:4px solid #333333;
+background:#CCC;
+float:left;
+padding:10px;
+width:300px;
+}
+
+#buttoncreate:hover
+{
+background-color:#333333;
+color:#FFFFFF;
+}
+
+
+
+.error
+{
+	border-color:#F00;
+}
+
+.table_footer{
+border:1px solid #000000;
+width:1100px;
+
+}
+#buttonCreate
+{
+	font-size:9px;
+	display:block;
+	background-color:#CCC;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	font:tahoma;
+	margin:0;
+	font-weight:100;
+	color:#000;
+	padding:3px;
+	float:left;
+	margin-left:10px;
+	padding-left:30px;
+	padding-right:30px;
+	
+	
+}
+#buttonCreate:hover
+{
+	cursor:pointer;
+	color:#333;
+	border:#666 solid 1px;
+	background:#666;
+	color:#FFF;
+}
+#buttonPos
+{
+	
+	margin:0 auto;
+	margin-bottom:15px;
+	float:left;
+
+	
+}
+#fancyWrap
+{
+	height:500px;
+	width:805px;
+	margin:0 auto;
+}
+#tblPos
+{
+	padding-top:50px;
+}
+.tblInfo
+{
+	background-color:#CCC;
+	padding:10px;
+	margin-bottom:10px;
+	font:Tahoma, Geneva, sans-serif;
+}
+.logFooter
+{
+	margin:0 auto;
+	border: solid 1px;
+	
+}
+#tooltip
+{
+	position:absolute;
+    top:30%;
+    left:35%;
+    width:350px;
+	z-index:1000;
+	border:solid 1px;
+	background-color:#FFF;
+	height:300px;
+	
+}
+	
+.rap
+{
+color:#000;
+font:Tahoma, Geneva, sans-serif;
+}
+.tblDetail
+{
+	font:Tahoma, Geneva, sans-serif;
+	width:300px;
+	font-size:9px;
+	
+	border:solid 1px;
+	margin:5px;
+	padding:2px;
+}
+.tblDetail .detailContent
+{
+	text-align:center;
+}
+#odd
+{
+	background: #E2E4FF;
+	
+	text-align:center;
+}
+#even
+{
+	background:#999;
+	text-align:center;
+	display:
+}
+#headerDesign
+{
+	background-image:url(images/header.gif);
+	background-size:100% 100%;
+	height:80px;
+	width:400px;
+}
+/*for upload Photo*/
+.uploadWrapper
+{
+	width:100%;
+	
+}
+.uploadHeader
+{
+	width:100%;
+	height:50px;
+	background-color:#999;
+}
+#yourBtn
+{
+   font-family: calibri;
+   width: 150px;
+   padding: 10px;
+   -webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+   border: 1px dashed #BBB; 
+   text-align: center;
+   background-color: #DDD;
+   cursor:pointer;
+   margin-left:50px;
+   margin-top:10px;
+   position:relative;
+   top:80px;
+
+  }
+.uploadContent
+{
+	margin:0 auto;
+	width:600px;
+	height:200px;
+	background:#06C;
+	border-radius:10px;
+	margin-top:60px;
+	margin-bottom:20px;
+	background-image:url(images2/uploadform.gif);
+	background-size:100% 100%;
+}
+.uploadForm
+{
+	width:400px;
+	margin:0 auto;
+	padding-top:30px;
+
+}
+.myPhoto
+{
+	width:860px;
+	margin:0 auto;
+	padding-top:20px;
+	background:#999;
+	border-radius:10px;
+	background-image:url(images2/picture.gif);
+	background-size:100% 100%;
+}
+.myPic
+{
+	border-radius:10px;
+	margin:10px;
+	border:solid 3px #333;
+}
+#uploadNote
+{
+	float:right;
+	font:Tahoma, Geneva, sans-serif;
+	font-size:9px;
+	color:#C00;
+	width:200px;
+}
+.emp
+{
+	margin-left:80px;
+	padding-top:8px;
+	font:Arial, Helvetica, sans-serif;
+	font-size:11px;
+}
+.close
+{
+	width:40px;
+	float:right;
+}
