@@ -27,7 +27,7 @@ include('datasource.php');
 												<table width="100%" class="title1">
 													<tr>
 														<td colspan="4" class="title1" align="center">
-                                                        	<font size="+1">CONTROL ACCOUNT (LISTING)</font>
+                                                        	<font size="+1">EMPLOYEE (LISTING)</font>
                                                         </td>
 													</tr>
 													<tr>
