@@ -37,7 +37,13 @@ $mResult = $mysqli->query("update employeeinformation set EmpFirstName='$empfirs
 
 if ($mResult == 1)
 	{
-		echo $_SESSION['S_MenuLocation']."&nbsp;&nbsp;Updating Record Successfully Save!";
+
+		if(isset($_SESSION['S_MenuLocation']) && !empty($_SESSION['S_MenuLocation'])) {
+			echo $_SESSION['S_MenuLocation']."&nbsp;&nbsp;Updating Record Successfully Save!";
+		} else{
+			echo "Updating Record Successfully Save!";
+		}
+		
 
 	}
 else

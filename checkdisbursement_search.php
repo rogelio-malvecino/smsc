@@ -15,13 +15,14 @@
 	$mAccess8 =fp_Get_Button_Access_Rights("CmdName","commandaccess", "EmpNumber = ''".$_SESSION['S_UserID']."'' AND CmdName = ''ADMIN'' AND SubMenuCode =''Checkdisbursement''");//admin
 	
 
-	$mControlNo = $_REQUEST["ControlNo"];
-	$mPaymasterID = $_REQUEST["PaymasterID"]; 	
-	$mReferenceNo = $_REQUEST["ReferenceNo"]; 	
+	$mControlNo = !empty($_REQUEST["ControlNo"]) ? $_REQUEST["ControlNo"] : "";
+	$mPaymasterID = !empty($_REQUEST["PaymasterID"]) ? $_REQUEST["PaymasterID"] : "";  	
+	$mReferenceNo = !empty($_REQUEST["ReferenceNo"]) ? $_REQUEST["ReferenceNo"] : ""; 	
 	$mDate1 = date("Y-m-d"); 
 	$mDate2 = date("Y-m-d"); 
-	$mStatus = $_REQUEST["Status"];
-	if($_REQUEST["Start"]=='2')
+	$mStatus = !empty($_REQUEST["Status"]) ? $_REQUEST["Status"] : "";
+	$mStart = !empty($_REQUEST["Start"]) ? $_REQUEST["Start"] : "";
+	if($mStart =='2')
 	{
 		$mDate1 = $_REQUEST["Year1"]."-".$_REQUEST["Month1"]."-".$_REQUEST["Day1"];
 		$mDate2 =  $_REQUEST["Year2"]."-".$_REQUEST["Month2"]."-".$_REQUEST["Day2"];
@@ -174,7 +175,7 @@
 </body>
 </html>
 <?php
-	if ($_REQUEST["Start"]=='1')
+	if ($mStart=='1')
 		{
 ?>
 			<script language="JavaScript">

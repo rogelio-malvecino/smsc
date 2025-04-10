@@ -17,7 +17,7 @@
 					
 					while ($i <= $_REQUEST['Rec'])
 						{ 										
-							list($mCSID, $mParticular) = split('!', $mData[$i-1]);
+							list($mCSID, $mParticular) = explode('!', $mData[$i-1]);
 							$mDesc = $mDesc."CS#: ".$mCSID." - ".$mParticular."\n";
 							
 							include ("datasource.php");
@@ -305,7 +305,7 @@
 					$i = 1;
 					while ($i <= $mRec)
 						{ 										
-							list($mAccountID, $mAccountTitle, $mSubsidiaryID, $mDebit, $mCredit) = split('!', $mData[$i-1]);
+							list($mAccountID, $mAccountTitle, $mSubsidiaryID, $mDebit, $mCredit) = explode('!', $mData[$i-1]);
 				
 							$mAccountCode = $mAccountID;
 							$mAccountDescription = $mAccountTitle;

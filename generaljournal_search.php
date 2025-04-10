@@ -15,12 +15,13 @@
 	$mAccess8 =fp_Get_Button_Access_Rights("CmdName","commandaccess", "EmpNumber = ''".$_SESSION['S_UserID']."'' AND CmdName = ''ADMIN'' AND SubMenuCode =''Journal''");//admin
 	
 
-	$mControlNo = $_REQUEST["ControlNo"];
+	$mControlNo = !empty($_REQUEST["ControlNo"]) ? $_REQUEST["ControlNo"] : "";
 	$Date1 = date("Y-m-d"); 
 	$Date2 = date("Y-m-d");
-	$mStatus = $_REQUEST["Status"];
-	
-	if($_REQUEST["Start"]=='2')
+	$mStatus = !empty($_REQUEST["Status"]) ? $_REQUEST["Status"] : ""; 
+	$mStart = !empty($_REQUEST["Start"]) ? $_REQUEST["Start"] : ""; 
+
+	if($mStart=='2')
 	{
 		$Date1 = $_REQUEST["Year1"]."-".$_REQUEST["Month1"]."-".$_REQUEST["Day1"];
 		$Date2 =  $_REQUEST["Year2"]."-".$_REQUEST["Month2"]."-".$_REQUEST["Day2"];
@@ -80,7 +81,7 @@
                                         <tr bgcolor="#EBEBEB" onMouseOver="this.style.backgroundColor='#FFFFFF'" onMouseOut="this.style.backgroundColor=''">
                                             <td colspan="2" class="detail1">&nbsp;Enter Journal#&nbsp;</td>
                                             <td width="79%" class="detail1">
-                                                &nbsp;<input type="text" name="txtControlNo" maxlength="9" size="15" class="detail1" value="<?php echo $_REQUEST["ControlNo"] ?>">                                              		
+                                                &nbsp;<input type="text" name="txtControlNo" maxlength="9" size="15" class="detail1" value="<?php echo !empty($_REQUEST["ControlNo"]) ? $_REQUEST["ControlNo"] : ""  ?>">                                              		
                                             </td>
                                         </tr>
                                         <tr bgcolor="#EBEBEB" onMouseOver="this.style.backgroundColor='#FFFFFF'" onMouseOut="this.style.backgroundColor=''">

@@ -16,12 +16,13 @@
 	$mAccess7 =fp_Get_Button_Access_Rights("CmdName","commandaccess", "EmpNumber = ''".$_SESSION['S_UserID']."'' AND CmdName = ''PRINT'' AND SubMenuCode =''purchases''");//print
 	$mAccess8 =fp_Get_Button_Access_Rights("CmdName","commandaccess", "EmpNumber = ''".$_SESSION['S_UserID']."'' AND CmdName = ''ADMIN'' AND SubMenuCode =''purchases''");//admin
 
-	$mControlNo = $_REQUEST["ControlNo"];
-	$mReferenceNo = $_REQUEST["ReferenceNo"]; 	
+	$mControlNo = !empty($_REQUEST["ControlNo"]) ? $_REQUEST["ControlNo"] : "";
+	$mReferenceNo = !empty($_REQUEST["ReferenceNo"]) ? $_REQUEST["ReferenceNo"] : ""; 	
 	$mDate1 = date("Y-m-d"); 
 	$mDate2 = date("Y-m-d");
-	$mStatus = $_REQUEST["Status"];
-	if($_REQUEST["Start"]=='2')
+	$mStatus = !empty($_REQUEST["Status"]) ?$_REQUEST["Status"] : "";
+	$mStart = !empty($_REQUEST["Start"]) ?$_REQUEST["Start"] : "";
+	if($mStart=='2')
 	{
 		$mDate1 = $_REQUEST["Year1"]."-".$_REQUEST["Month1"]."-".$_REQUEST["Day1"];
 		$mDate2 =  $_REQUEST["Year2"]."-".$_REQUEST["Month2"]."-".$_REQUEST["Day2"];
@@ -81,7 +82,7 @@
                                         <tr bgcolor="#EBEBEB" onMouseOver="this.style.backgroundColor='#FFFFFF'" onMouseOut="this.style.backgroundColor=''">
                                             <td colspan="2" class="detail1">&nbsp;Enter PB#&nbsp;</td>
                                             <td width="79%" class="detail1">
-                                                &nbsp;<input type="text" name="txtControlNo" maxlength="9" size="15" class="detail1" value="<?php echo $_REQUEST["ControlNo"] ?>">                                              		
+                                                &nbsp;<input type="text" name="txtControlNo" maxlength="9" size="15" class="detail1" value="<?php echo !empty($_REQUEST["ControlNo"]) ? $_REQUEST["ControlNo"] : "" ?>">                                              		
                                             </td>
                                         </tr>
 										<tr bgcolor="#EBEBEB" onMouseOver="this.style.backgroundColor='#FFFFFF'" onMouseOut="this.style.backgroundColor=''">

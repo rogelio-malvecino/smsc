@@ -21,8 +21,8 @@ Is_Logged_In();
 	</thead>
 <?php
 include ("datasource.php");
-   $employeeCode=$_GET['code'];
-   $employeeName=$_GET['name'];
+   $employeeCode= !empty($_GET['code']) ? $_GET['code'] : "";
+   $employeeName= !empty($_GET['name']) ? $_GET['name'] : "";
    echo $employeeCode;
    echo $employeeName;
    ?>

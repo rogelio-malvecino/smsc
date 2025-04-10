@@ -937,7 +937,7 @@ function fp_Add_FinancialDetail($mTable, $mControlNo, $mRec, $mData)
 		while ($i <= $mRec)
 			{ 										
 				include ("datasource.php");
-				list($mAccountID, $mAccountTitle, $mSubsidiaryID, $mDebit, $mCredit) = split('!', $mData[$i-1]);
+				list($mAccountID, $mAccountTitle, $mSubsidiaryID, $mDebit, $mCredit) = explode('!', $mData[$i-1]);
 				$mResult = $mysqli->query("Call sp_Execute_Query('INSERT INTO ".$mTable." VALUES(''".$mControlNo."'',".$i.",''".$mAccountID."'',''".$mSubsidiaryID."'',".$mDebit.",".$mCredit.")')");
 				mysqli_close($mysqli);		
 				
