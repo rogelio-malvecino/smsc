@@ -1,21 +1,18 @@
 <?php
 	session_start(); 
-	include ("erp_functions.php");
+	include ("Functioneverwing.php");
 	Is_Logged_In();
-
-	include ("datasource_comp.php");
+	include ("datasource.php");
 	include ("function.php");	
-	
-	
-		
-	$mAccess1 ='1'; fp_Get_Button_Access_Rights("CmdName","commandaccess", "EmpNumber = ''".$_SESSION['S_UserID']."'' AND CmdName = ''SEARCH'' AND SubMenuCode =''Journal''"); // SEARCH
-	$mAccess2 ='1'; fp_Get_Button_Access_Rights("CmdName","commandaccess", "EmpNumber = ''".$_SESSION['S_UserID']."'' AND CmdName = ''ADD'' AND SubMenuCode =''Journal''"); //add
-	$mAccess3 ='1'; fp_Get_Button_Access_Rights("CmdName","commandaccess", "EmpNumber = ''".$_SESSION['S_UserID']."'' AND CmdName = ''SAVE'' AND SubMenuCode =''Journal''");//save
-	$mAccess4 ='1'; fp_Get_Button_Access_Rights("CmdName","commandaccess", "EmpNumber = ''".$_SESSION['S_UserID']."'' AND CmdName = ''EDIT'' AND SubMenuCode =''Journal''");;//edit
-	$mAccess5 ='1'; fp_Get_Button_Access_Rights("CmdName","commandaccess", "EmpNumber = ''".$_SESSION['S_UserID']."'' AND CmdName = ''DELETE'' AND SubMenuCode =''Journal''");//delete
-	$mAccess6 ='1'; fp_Get_Button_Access_Rights("CmdName","commandaccess", "EmpNumber = ''".$_SESSION['S_UserID']."'' AND CmdName = ''POST'' AND SubMenuCode =''Journal''");//post
-	$mAccess7 ='1'; fp_Get_Button_Access_Rights("CmdName","commandaccess", "EmpNumber = ''".$_SESSION['S_UserID']."'' AND CmdName = ''PRINT'' AND SubMenuCode =''Journal''");//print
-	$mAccess8 ='1'; fp_Get_Button_Access_Rights("CmdName","commandaccess", "EmpNumber = ''".$_SESSION['S_UserID']."'' AND CmdName = ''ADMIN'' AND SubMenuCode =''Journal''");//admin
+
+	$mAccess1 =fp_Get_Button_Access_Rights("CmdName","commandaccess", "EmpNumber = ''".$_SESSION['S_UserID']."'' AND CmdName = ''SEARCH'' AND SubMenuCode =''Journal''"); // SEARCH
+	$mAccess2 =fp_Get_Button_Access_Rights("CmdName","commandaccess", "EmpNumber = ''".$_SESSION['S_UserID']."'' AND CmdName = ''ADD'' AND SubMenuCode =''Journal''"); //add
+	$mAccess3 =fp_Get_Button_Access_Rights("CmdName","commandaccess", "EmpNumber = ''".$_SESSION['S_UserID']."'' AND CmdName = ''SAVE'' AND SubMenuCode =''Journal''");//save
+	$mAccess4 =fp_Get_Button_Access_Rights("CmdName","commandaccess", "EmpNumber = ''".$_SESSION['S_UserID']."'' AND CmdName = ''EDIT'' AND SubMenuCode =''Journal''");;//edit
+	$mAccess5 =fp_Get_Button_Access_Rights("CmdName","commandaccess", "EmpNumber = ''".$_SESSION['S_UserID']."'' AND CmdName = ''DELETE'' AND SubMenuCode =''Journal''");//delete
+	$mAccess6 =fp_Get_Button_Access_Rights("CmdName","commandaccess", "EmpNumber = ''".$_SESSION['S_UserID']."'' AND CmdName = ''POST'' AND SubMenuCode =''Journal''");//post
+	$mAccess7 =fp_Get_Button_Access_Rights("CmdName","commandaccess", "EmpNumber = ''".$_SESSION['S_UserID']."'' AND CmdName = ''PRINT'' AND SubMenuCode =''Journal''");//print
+	$mAccess8 =fp_Get_Button_Access_Rights("CmdName","commandaccess", "EmpNumber = ''".$_SESSION['S_UserID']."'' AND CmdName = ''ADMIN'' AND SubMenuCode =''Journal''");//admin
 	
 
 	$mControlNo = $_REQUEST["ControlNo"];
@@ -35,14 +32,13 @@
 <html>
 <head>
 	<title>General Journal Masterfile</title>
-	<link href="css/mystyle.css" rel="stylesheet" type="text/css" >
+	<link href="../global/mystyle.css" rel="stylesheet" type="text/css" >
     <script language="javascript" src="Functions.js"></script>
-    
 	
 </head>
 <body background="../images/background.JPG" onLoad="javascript:GeneralJournal_Search();"> 
 <form name="frmJournal" action="generaljournal_search.php" method="post">
-<table width="70%" border="0" cellspacing="0" cellpadding="0" align="center">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
 	<tr>
 		<td valign="top" align="center" background="../images/bg_left.gif" bordercolor="#FFFFFF">
 
@@ -65,7 +61,7 @@
 													</tr>
 													<tr>
 														<td colspan="4" align="center" nowrap class="title1">
-                                                          	<input type="button" name="cmdNew" class="detail1" value="  Create New Record "  <?php //*Insert User button Access Here*\\ ?> onClick="javascript:GeneralJournal_Action(1);">
+                                                          	<input type="button" name="cmdNew" class="detail1" value="  Create New Record "  <?php if ($mAccess2 == '') { ?>disabled<?php } ?> onClick="javascript:GeneralJournal_Action(1);">
                                                             <input type="button" name="cmdSearch" class="detail1" value="  Search/List Record(s)  " onClick="javascript:GeneralJournal_Action(2);">
 														</td>
 													</tr>											  
@@ -90,14 +86,14 @@
                                         <tr bgcolor="#EBEBEB" onMouseOver="this.style.backgroundColor='#FFFFFF'" onMouseOut="this.style.backgroundColor=''">
                                             <td colspan="2" class="detail1">&nbsp;Select Journal Date (From)</td>
                                             <td class="detail1" colspan="5">
- 												&nbsp;<input type="text" id="Date1" maxlength="25" size="25" class="detail1" readonly="true" value="<?php echo $Date1 ?>"/>
+ 												<input type="text" id="Date1" maxlength="25" size="25" readonly="true" value="<?php echo $Date1 ?>"/>
 												<img src="images/cal.gif" onClick="javascript:NewCssCal('Date1');" style="cursor:pointer"/>
 											</td>
 										</tr>
 										<tr bgcolor="#EBEBEB" onMouseOver="this.style.backgroundColor='#FFFFFF'" onMouseOut="this.style.backgroundColor=''">
 											<td colspan="2" class="detail1">&nbsp;Select Journal Date (To)</td>
 											<td class="detail1" colspan="5">
-												&nbsp;<input type="text" id="Date2" maxlength="25" size="25" class="detail1" readonly="true" value="<?php echo $Date2 ?>"/>
+												<input type="text" id="Date2" maxlength="25" size="25" readonly="true" value="<?php echo $Date2 ?>"/>
 												<img src="images/cal.gif" onClick="javascript:NewCssCal('Date2');" style="cursor:pointer"/>
 											</td>
 										</tr>
@@ -113,7 +109,7 @@
                                         </tr>
 										<tr valign="top" bgcolor="#EBEBEB">
                                             <td colspan="7" align="center" class="detail1">
-                                                &nbsp;<input type="button" name="cmdSearch" class="detail1" value="Search" <?php //*Insert User button Access Here*\\ ?> onClick="javascript:GeneralJournal_Search();" tabindex="1">
+                                                &nbsp;<input type="button" name="cmdSearch" class="detail1" value="Search" <?php if($mAccess1 == '') {?>disabled<?php } ?> onClick="javascript:GeneralJournal_Search();" tabindex="1">
                                             </td>
                                         </tr>
 									</table>											

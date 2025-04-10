@@ -1,9 +1,9 @@
 <?php
 	session_start(); 
-	include ("erp_functions.php");
+	include ("Functioneverwing.php");
 	Is_Logged_In();
-
-	include ("datasource_comp.php");
+	
+	include ("datasource.php");
 	include ("function.php");	
 
 	$mAccess1 = fp_Get_Button_Access_Rights("CmdName","commandaccess", "EmpNumber = ''".$_SESSION['S_UserID']."'' AND CmdName = ''SEARCH'' AND SubMenuCode =''cashsales''"); // SEARCH
@@ -62,7 +62,7 @@
 			$mData = $_SESSION['myData'];//$_REQUEST['Data'];
 
 			
-			include ("datasource_comp.php");
+			include ("datasource.php");
 			$mResult = $mysqli->query("Call sp_GeneralJournal_Verify('_','".$_REQUEST['ControlNo']."')");
 			if (mysqli_num_rows($mResult) > 0)
 				{
@@ -73,7 +73,7 @@
 			else
 				{
 					mysqli_close($mysqli);
-					include ("datasource_comp.php");					
+					include ("datasource_.php");					
 
 					$mControlNo = fp_Auto_FinancialNumber("GJID_cd","tb_tgeneraljournalhdr","1=1");
 					$mControlNo_ = $mControlNo;
@@ -88,7 +88,7 @@
 						$mParticular.'!'.
 						$mData.'!';
 
-					include ("datasource_comp.php");					
+					include ("datasource.php");					
 					$mResult = $mysqli->query("Call sp_GeneralJournalHDR_Insert('".$_SESSION['S_UserID']."','"
 																		  .$mControlNo."','"
 																		  .$mGJDate."','"
@@ -114,8 +114,8 @@
 <html>
 <head>
 	<title>Add General Journal</title>
-	<link href="css/mystyle.css" rel="stylesheet" type="text/css" >
-	<script language="JavaScript" src="Functions.js"></script>
+	<link href="../global/mystyle.css" rel="stylesheet" type="text/css" >
+	<script language="JavaScript" src="../global/Functions.js"></script>
 	<script language="JavaScript">
 	onerror=handleErr;
 
@@ -123,7 +123,7 @@
 </head>
 <body background="../images/background.JPG" onLoad="document.frmFinancial.cboMonth1.focus(); aGeneralJournal_LoadAccount();"> 
 <form name="frmFinancial" action="generaljournal_add.php" method="post">
-<table width="70%" border="0" cellspacing="0" cellpadding="0" align="center">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
 	<tr>
 		<td valign="top" align="center" background="../images/bg_left.gif" bordercolor="#FFFFFF">
 
@@ -146,9 +146,9 @@
 													</tr>
 													<tr>
 														<td colspan="4" align="center" nowrap class="title1">
-                                                          	<input type="button" name="cmdNew" class="detail1" value="  Create New Record "  <?php //*Insert User button Access Here*\\ ?> onClick="javascript:aGeneralJournal_Action(1);">
-                                                            <input type='button' name='cmdDelete' class='detail1' value='Delete Account(s)' <?php //*Insert User button Access Here*\\ ?> onClick='javascript:aGeneralJournal_DeleteAccount();' tabindex="0">
-                                                            <input type="button" name="cmdSave" class="detail1" value="  [F8] - Save  "  <?php //*Insert User button Access Here*\\ ?> onClick="javascript:aGeneralJournal_Action(2);">
+                                                          	<input type="button" name="cmdNew" class="detail1" value="  Create New Record "  <?php if ($mAccess2 == '') { ?>disabled<?php } ?> onClick="javascript:aGeneralJournal_Action(1);">
+                                                            <input type='button' name='cmdDelete' class='detail1' value='Delete Account(s)' <?php if ($mAccess5 == '') { ?>disabled<?php } ?> onClick='javascript:aGeneralJournal_DeleteAccount();' tabindex="0">
+                                                            <input type="button" name="cmdSave" class="detail1" value="  [F8] - Save  "  <?php if ($mAccess3 == '' || $mOk == 1) { ?>disabled<?php } ?> onClick="javascript:aGeneralJournal_Action(2);">
                                                             <input type="button" name="cmdSearch" class="detail1" value="  Search/List Record(s)  " onClick="javascript:aGeneralJournal_Action(3);">
 														</td>
 													</tr>
@@ -176,12 +176,12 @@
 										<tr bgcolor="#EBEBEB" onMouseOver="this.style.backgroundColor='#FFFFFF'" onMouseOut="this.style.backgroundColor=''">
 											<td class="detail1">&nbsp;Journal Date</td>
 											<td class="detail1" colspan="2">
- 												&nbsp;<input type="text" id="Date1" maxlength="25" size="25" class="detail1" readonly="true" value="<?php echo $Date1 ?>"/>
+ 												<input type="text" id="Date1" maxlength="25" size="25" readonly="true" value="<?php echo $Date1 ?>"/>
 												<img src="images/cal.gif" onClick="javascript:NewCssCal('Date1');" style="cursor:pointer"/>
 											</td>
 										</tr>
 										<tr bgcolor="#EBEBEB" onMouseOver="this.style.backgroundColor='#FFFFFF'" onMouseOut="this.style.backgroundColor=''">
-											<td width="100" class="detail1">&nbsp; Ref.#&nbsp;</td>
+											<td width="100" class="detail1">&nbsp;Voyage Ref.#&nbsp;</td>
 											<td colspan="2" class="detail1">
 												&nbsp;<input name="txtReferenceNo" id="txtReferenceNo" type="text" size="9" maxlength="15" value="<?php echo $mReferenceNo ?>" class="detail1" tabindex="4" onKeyUp="aGeneralJournal_SearchVoyageReference();" autocomplete="off">
                                                 &nbsp;<font color="#FF0000" size="+1">*</font>
@@ -224,7 +224,7 @@
                                                             <select name="cboAccountID" class="detail1" tabindex="8" onChange="javascript:aGeneralJournal_SearchAccount_();" onKeyPress="javascript:aGeneralJournal_EnterAccountID_(event);">
 															<option value="">-Select Account-</option>
 <?php
-															include ("datasource_comp.php");
+															include ("datasource.php");
 															$mResult = $mysqli->query("Call sp_ControlAccount_Select()");
 
 															if (mysqli_num_rows($mResult) > 0)
@@ -252,7 +252,7 @@
                                                             <select name="cboSubsidiaryID" class="detail1" onKeyPress="javascript:aGeneralJournal_EnterSubsidiaryID(event);" tabindex="9">
 															<option value="">-Subsidiary Description-</option>
 <?php
-															include ("datasource_comp.php");
+															include ("datasource.php");
 															$mResult = $mysqli->query("Call sp_SubsidiaryAccount_Select('')");
 
 															if (mysqli_num_rows($mResult) > 0)
@@ -304,7 +304,7 @@
 		<td valign="top">
 
 		</td>
-		<td valign="top"><img border="0" src="images/bg_bottom.gif" width=100% height="17"></td>
+		<td valign="top"><img border="0" src="../images/bg_bottom.gif" width="790" height="17"></td>
 
 		<td align="left">
 

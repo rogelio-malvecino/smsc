@@ -1800,29 +1800,4 @@ function TrialBalance_CallAjaxPage(mPage,mStart,mControlAccount,mSubsidiaryID,mS
 				}
 		}
 	
-	/////////////////////////////////////FINANCE STATEMNET PER VOYAGE////////////////////////////////////////////
-	function FinanceStatementPerVoyage_Print(mUserID)
-		{
-			try{
-			var mDate1 = eval('document.frmFinancial.Date1.value;');
-			var mDate2 = eval('document.frmFinancial.Date2.value;');
-			var mReferenceNo = eval('document.frmFinancial.txtReferenceNo.value;');
-			var mStart = '0';
-			var mStatus = document.frmFinancial.cboStatus.options[document.frmFinancial.cboStatus.selectedIndex].value; 	
-			if (mStart=='0')
-				{
-					window.close();
-					window.open('pervoyagefinancestatement_print.php?UserID='+mUserID+			
-														 '&mDateFrom='+mDate1+
-														 '&mDateTo='+mDate2+
-														 '&mReference='+mReferenceNo+
-														 '&Status='+mStatus	
-								,'_new', 'target=_self,toolbar=yes,scrollbars=yes,resizable=yes');
-				}
-			}	
-			catch(e)
-			{
-				alert("what error"+e.message);
-			}	
-		}	
 		

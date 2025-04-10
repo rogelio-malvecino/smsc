@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	include ("erp_functions.php");
+	include ("Functioneverwing.php");
 	Is_Logged_In();
 	
 	//deleting item
@@ -17,7 +17,7 @@
 							list($mGJID, $mParticular) = split('!', $mData[$i-1]);
 							$mDesc = $mDesc."Journal#: ".$mGJID." - ".$mParticular."\n";
 							
-							include ("datasource_comp.php");
+							include ("datasource.php");
 							$mResult = $mysqli->query("Call sp_GeneralJournal_Delete('".$_SESSION['S_UserID']."','"
 																					   .$mGJID."','"
 																					   .$mDesc."')");
@@ -32,17 +32,17 @@
 	if ($_POST["Start"]=='1' || $_POST["Start"]=='2')
 		{
 			
-			include ("datasource_comp.php");
+			include ("datasource.php");
 			include ("function.php");
 
-			$mAccess1 ='1'; fp_Get_Button_Access_Rights("CmdName","commandaccess", "EmpNumber = ''".$_SESSION['S_UserID']."'' AND CmdName = ''SEARCH'' AND SubMenuCode =''Journal''"); // SEARCH
-			$mAccess2 ='1'; fp_Get_Button_Access_Rights("CmdName","commandaccess", "EmpNumber = ''".$_SESSION['S_UserID']."'' AND CmdName = ''ADD'' AND SubMenuCode =''Journal''"); //add
-			$mAccess3 ='1'; fp_Get_Button_Access_Rights("CmdName","commandaccess", "EmpNumber = ''".$_SESSION['S_UserID']."'' AND CmdName = ''SAVE'' AND SubMenuCode =''Journal''");//save
-			$mAccess4 ='1'; fp_Get_Button_Access_Rights("CmdName","commandaccess", "EmpNumber = ''".$_SESSION['S_UserID']."'' AND CmdName = ''EDIT'' AND SubMenuCode =''Journal''");;//edit
-			$mAccess5 ='1'; fp_Get_Button_Access_Rights("CmdName","commandaccess", "EmpNumber = ''".$_SESSION['S_UserID']."'' AND CmdName = ''DELETE'' AND SubMenuCode =''Journal''");//delete
-			$mAccess6 ='1'; fp_Get_Button_Access_Rights("CmdName","commandaccess", "EmpNumber = ''".$_SESSION['S_UserID']."'' AND CmdName = ''POST'' AND SubMenuCode =''Journal''");//post
-			$mAccess7 ='1'; fp_Get_Button_Access_Rights("CmdName","commandaccess", "EmpNumber = ''".$_SESSION['S_UserID']."'' AND CmdName = ''PRINT'' AND SubMenuCode =''Journal''");//print
-			$mAccess8 ='1'; fp_Get_Button_Access_Rights("CmdName","commandaccess", "EmpNumber = ''".$_SESSION['S_UserID']."'' AND CmdName = ''ADMIN'' AND SubMenuCode =''Journal''");//admin
+			$mAccess1 =fp_Get_Button_Access_Rights("CmdName","commandaccess", "EmpNumber = ''".$_SESSION['S_UserID']."'' AND CmdName = ''SEARCH'' AND SubMenuCode =''Journal''"); // SEARCH
+			$mAccess2 =fp_Get_Button_Access_Rights("CmdName","commandaccess", "EmpNumber = ''".$_SESSION['S_UserID']."'' AND CmdName = ''ADD'' AND SubMenuCode =''Journal''"); //add
+			$mAccess3 =fp_Get_Button_Access_Rights("CmdName","commandaccess", "EmpNumber = ''".$_SESSION['S_UserID']."'' AND CmdName = ''SAVE'' AND SubMenuCode =''Journal''");//save
+			$mAccess4 =fp_Get_Button_Access_Rights("CmdName","commandaccess", "EmpNumber = ''".$_SESSION['S_UserID']."'' AND CmdName = ''EDIT'' AND SubMenuCode =''Journal''");;//edit
+			$mAccess5 =fp_Get_Button_Access_Rights("CmdName","commandaccess", "EmpNumber = ''".$_SESSION['S_UserID']."'' AND CmdName = ''DELETE'' AND SubMenuCode =''Journal''");//delete
+			$mAccess6 =fp_Get_Button_Access_Rights("CmdName","commandaccess", "EmpNumber = ''".$_SESSION['S_UserID']."'' AND CmdName = ''POST'' AND SubMenuCode =''Journal''");//post
+			$mAccess7 =fp_Get_Button_Access_Rights("CmdName","commandaccess", "EmpNumber = ''".$_SESSION['S_UserID']."'' AND CmdName = ''PRINT'' AND SubMenuCode =''Journal''");//print
+			$mAccess8 =fp_Get_Button_Access_Rights("CmdName","commandaccess", "EmpNumber = ''".$_SESSION['S_UserID']."'' AND CmdName = ''ADMIN'' AND SubMenuCode =''Journal''");//admin
 
 			$mResult = $mysqli->query("Call sp_GeneralJournal_Search('".$_POST['ControlNo']."','"
 																       .$_POST['StartDate']."','"
@@ -220,7 +220,7 @@
 	//searching account
 	if ($_POST["Start"]=='3' || $_POST["Start"]=='4')
 		{
-			include ("datasource_comp.php");
+			include ("datasource.php");
 
 			$mResult = $mysqli->query("Call sp_Execute_Query(
 									  'SELECT a.AccountID_cd,
@@ -247,7 +247,7 @@
 	//searching subsidiary
 	if ($_POST["Start"]=='5')
 		{
-			include ("datasource_comp.php");
+			include ("datasource.php");
 
 			$mResult = $mysqli->query("Call sp_SubsidiaryRights_Select('".$_POST['AccountID']."')");
 			
@@ -303,7 +303,7 @@
 
 			if (floatval($mRec) > 0)
 				{
-					include ("datasource_comp.php");
+					include ("datasource.php");
 					include ("function.php");
 
 					$mData = explode("*", $mData);
@@ -365,7 +365,7 @@
 	//searching voyage reference
 	if ($_POST["Start"]=='9')
 		{
-			include ("datasource_comp.php");
+			include ("datasource.php");
 			$mResult = $mysqli->query("Call sp_voyagereference_lookup('".$_REQUEST['VoyageReference']."')");
 			
 			$display_string = "";

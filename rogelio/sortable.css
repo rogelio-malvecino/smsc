@@ -1,0 +1,112 @@
+.sortable{
+width:100%;}
+
+.sortable tr th a{
+text-decoration:none;
+color:#FFFFFF;
+
+}
+
+.sortable tr th{
+background-image:url(images2/img2.gif);
+height:50px;
+text-align:left;
+text-indent:8px;
+}
+
+
+.unsortable{
+color:#FFFFFF;
+-moz-border-radius-topright:10px;
+}
+
+.left{-moz-border-radius-topleft:10px;}
+
+
+
+table.sortable td {
+font: 1em "Trebuchet MS", Arial, Helvetica, sans-serif;
+	color:#FFFFFF;
+		border-width:0px;
+		text-align:left;
+		text-indent:10px;
+}
+table.sortable td a{
+text-decoration:none;
+color:#FFFFFF;
+}
+table.sortable tr.odd td {
+border-bottom:2px groove #666666;
+height:40px;
+}
+
+table.sortable tr.odd td a:hover{
+color:#000000;
+text-decoration:underline;}
+
+table.sortable tr.even td {
+
+border-bottom:2px groove #333333;
+	height:40px;
+}
+
+
+table.sortable tr.even td a:hover{
+color:#000000;
+text-decoration:underline;
+}
+
+
+
+table.sortable tr.sortbottom td {
+	border-top: 1px solid #444;
+	background-color: #ccc;
+	font-weight: bold;
+}
+
+
+.sortableto{
+margin-left:-280px;
+}
+.sortableto tr td{
+color:#FFFFFF;}
+.sortableto tr td input{
+padding:5px;
+color:#666666;
+border-radius:5px;}
+
+.sortableto tr td input.send{
+padding:10px;
+color:#FFFFFF;
+border-radius:10px;
+border:0;}
+div.footerto{
+background-image:url(images2/4.gif);
+height:40px;
+line-height:40px;
+text-align:left;
+-moz-border-radius-bottomleft:10px;
+-moz-border-radius-bottomright:10px;}
+
+div.footerto input.footer{
+background-image:url(images2/4.gif);
+border:0;
+color:#FFFFFF;}
+div.footerto input.footer:hover{
+color:#CCCCCC;}
+
+.sortabletree{
+margin-left:40px;
+}
+.sortabletree tr td{
+color:#FFFFFF;}
+.sortabletree tr td input{
+padding:5px;
+color:#666666;
+border-radius:5px;}
+.sortabletree tr td input.send{
+background-color:#666666;
+padding:10px;
+color:#FFFFFF;
+border-radius:10px;
+border:0;}

@@ -242,7 +242,7 @@
 					$mTitle1 = "Prepared By:";//fp_Get_Record("Title1_tx","tb_msignatory", "SignatoryID_cd = ''18''");
 					$mTitle2 = "Checked By:";//fp_Get_Record("Title2_tx","tb_msignatory", "SignatoryID_cd = ''18''");
 					$mTitle3 = "Aproved By:";//fp_Get_Record("Title3_tx","tb_msignatory", "SignatoryID_cd = ''18''");
-					$mReferenceNo = fp_Get_Record_("CheckNo_tx","tb_tcheckdisbursementhdr", "CDID_cd = ''".$_REQUEST['ControlNo']."''");
+					
 					
 
 					$this->SetFont('Arial','',8);
@@ -253,7 +253,7 @@
 					$this->Ln(1);
 					$this->Line(8, 140, 206, 140);
 					$this->SetFont('Times','B',9);
-					$this->Cell(47,9,' '.$mReferenceNo,0,0,'L');
+					$this->Cell(47,9,' '.$mTitle1,0,0,'L');
 					$this->Cell(47,9,' '.$mTitle2,0,0,'L');
 					$this->Cell(47,9,' '.$mTitle3,0,0,'L');
 					$this->Cell(58,9,'Payment Received by:',0,0,'C');	

@@ -1,8 +1,8 @@
 <?php
 
-$DBUSER="root";
-$DBPASSWD="misa_1127";
-$DATABASE="smsc_main";
+$DBUSER="user";
+$DBPASSWD="password";
+$DATABASE="user_db";
 
 $filename = "smsc-system-backup-" . date("d-m-Y") . ".sql.gz";
 $mime = "application/x-gzip";

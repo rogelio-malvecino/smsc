@@ -100,9 +100,6 @@
 					var mIncomeStatementType = document.frmFinancial.cboIncomeStatementType.value;
 					var mCashFlow = document.frmFinancial.chkCashFlow.checked;
 					var mCashFlowType = document.frmFinancial.cboCashFlowType.value;
-					var mFinanceStatementPerVoyage = document.frmFinancial.chkmFinanceStatementPerVoyage.checked;
-					var mFinanceStatementPerVoyageType = document.frmFinancial.cbomFinanceStatementPerVoyageType.value;
-
 					var mOk = '0';
 					
 					mOk = '1';
@@ -127,8 +124,7 @@
 							if (mBalanceSheet) { mBalanceSheet = '1'; } else { mBalanceSheet = '0'; }
 							if (mIncomeStatement) { mIncomeStatement = '1'; } else { mIncomeStatement = '0'; }
 							if (mCashFlow) { mCashFlow = '1'; } else { mCashFlow = '0'; }
-							if (mFinanceStatementPerVoyage) { mFinanceStatementPerVoyage = '1'; } else { mFinanceStatementPerVoyage = '0'; }
-	
+							
 							
 								var ajaxRequest = getAjaxRequest();
 								ajaxRequest.onreadystatechange = function()
@@ -142,7 +138,7 @@
 										}
 								}
 
-								var param= "Start=2&AccountID="+mAccountID+"&AccountDesc="+mAccountDesc+"&GroupID="+mGroupID+"&Bank="+mBank+"&Normal="+mNormal+"&CR="+mCR+"&PB="+mPB+"&CS="+mCS+"&BS="+mBS+"&CD="+mCD+"&GJ="+mGJ+"&BalanceSheet="+mBalanceSheet+"&BalanceSheetType="+mBalanceSheetType+"&IncomeStatement="+mIncomeStatement+"&IncomeStatementType="+mIncomeStatementType+"&CashFlow="+mCashFlow+"&CashFlowType="+mCashFlowType+"&FinanceStatementPerVoyage="+mFinanceStatementPerVoyage+"&FinanceStatementPerVoyageType="+mFinanceStatementPerVoyageType;
+								var param= "Start=2&AccountID="+mAccountID+"&AccountDesc="+mAccountDesc+"&GroupID="+mGroupID+"&Bank="+mBank+"&Normal="+mNormal+"&CR="+mCR+"&PB="+mPB+"&CS="+mCS+"&BS="+mBS+"&CD="+mCD+"&GJ="+mGJ+"&BalanceSheet="+mBalanceSheet+"&BalanceSheetType="+mBalanceSheetType+"&IncomeStatement="+mIncomeStatement+"&IncomeStatementType="+mIncomeStatementType+"&CashFlow="+mCashFlow+"&CashFlowType="+mCashFlowType;
 								ajaxRequest.open("POST","controlaccount_add.php",true);
 								ajaxRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 								ajaxRequest.send(param);

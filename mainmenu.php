@@ -76,7 +76,7 @@ WELCOME : <a class="themes" onclick="javascript:CallAjaxPage('userprofile.php?na
 <a class="themes" href=login.php>Log out</a>
 </div>
 </td></tr>
-<input type="hidden" id='user' value="<?php echo $_SESSION['User'] ?>" />
+<input type="hidden" id='user' value="<?php echo $_SESSION['S_EmployeeName'] ?>" />
 
 <tr>
 <td class="navlink" colspan="2">
@@ -141,7 +141,7 @@ WELCOME : <a class="themes" onclick="javascript:CallAjaxPage('userprofile.php?na
 </td>
 <tr><td class="footer" colspan="2"><div style="font-size:11px;">Copyright � 2012 Enterprises System</div></td><tr>
 
-</div>
+
 </table>
 
 

@@ -2,7 +2,7 @@
 
 	include ("datasource.php");
 
-	echo $_REQUEST['module'];
+	echo $_REQUEST['module']
 	if ($_REQUEST['search'] <> '')
 		{
 			if ($_REQUEST['module'] == '1002')

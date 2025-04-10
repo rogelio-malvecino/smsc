@@ -1,11 +1,10 @@
 <?php
 	session_start(); 
-	include ("erp_functions.php");
+	include ("Functioneverwing.php");
 	Is_Logged_In();
-
-	include ("datasource_comp.php");
-	include ("function.php");	
 	
+	include ("datasource.php");
+	include ("function.php");	
 
 
 	$mAccess1 =fp_Get_Button_Access_Rights("CmdName","commandaccess", "EmpNumber = ''".$_SESSION['S_UserID']."'' AND CmdName = ''SEARCH'' AND SubMenuCode =''Journal''"); // SEARCH
@@ -45,7 +44,7 @@
 
 	if ($_REQUEST['Start'] == 1)
 		{	
-			include ("datasource_comp.php");
+			include ("datasource.php");
 			$mResult = $mysqli->query("Call sp_GeneralJournal_RecSelect('".$_REQUEST['ID']."')");
 
 			if (mysqli_num_rows($mResult) > 0)
@@ -99,7 +98,7 @@
 					$mParticular.'!'.
 					$mData.'!';
 
-			include ("datasource_comp.php");					
+			include ("datasource.php");					
 			$mResult = $mysqli->query("Call sp_GeneralJournalHDR_Update('".$_SESSION['S_UserID']."','"
 																		  .$mControlNo."','"
 																		  .$mControlNo_."','"
@@ -124,7 +123,7 @@
 <html>
 <head>
 	<title>Update General Journal</title>
-	<link href="css/mystyle.css" rel="stylesheet" type="text/css" >
+	<link href="../global/mystyle.css" rel="stylesheet" type="text/css" >
 	<script language="JavaScript" src="Functions.js"></script>
 	<script language="JavaScript">
 	onerror=handleErr;
@@ -132,9 +131,9 @@
 </head>
 <body background="../images/background.JPG" onLoad="document.frmFinancial.cboMonth1.focus(); eGeneralJournal_LoadAccount();"> 
 <form name="frmFinancial" action="generaljournal_edit.php" method="post">
-<table width="70%" border="0" cellspacing="0" cellpadding="0" align="center">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
 	<tr>
-		<td valign="top" align="center" background="images/bg_left.gif" bordercolor="#FFFFFF">
+		<td valign="top" align="center" background="../images/bg_left.gif" bordercolor="#FFFFFF">
 
 		<td>
 			<table width="100%" border="0" bgcolor="#EBEBEB" cellspacing="0" cellpadding="7" align="center">
@@ -154,10 +153,10 @@
 													</tr>
 													<tr>
 														<td colspan="4" align="center" nowrap class="title1">
-                                                          	<input type="button" name="cmdNew" class="detail1" value="  Create New Record "  <?php //*Insert User button Access Here*\\ ?> onClick="javascript:eGeneralJournal_Action(1);">
-                                                            <input type='button' name='cmdDelete' class='detail1' value='Delete Account(s)' <?php //*Insert User button Access Here*\\ ?> onClick='javascript:eGeneralJournal_DeleteAccount();' tabindex="0">
-                                                            <input type="button" name="cmdSave" class="detail1" value="  [F8] - Save  "  <?php //*Insert User button Access Here*\\ ?> onClick="javascript:eGeneralJournal_Action(2);">
-                                                            <input type="button" name="cmdPost" class="detail1" value="  [F9] - Post "  <?php //*Insert User button Access Here*\\ ?> onClick="javascript:eGeneralJournal_Action(4);" tabindex="14">
+                                                          	<input type="button" name="cmdNew" class="detail1" value="  Create New Record "  <?php if ($mAccess2 == '') { ?>disabled<?php } ?> onClick="javascript:eGeneralJournal_Action(1);">
+                                                            <input type='button' name='cmdDelete' class='detail1' value='Delete Account(s)' <?php if ($mAccess5 == '') { ?>disabled<?php } ?> onClick='javascript:eGeneralJournal_DeleteAccount();' tabindex="0">
+                                                            <input type="button" name="cmdSave" class="detail1" value="  [F8] - Save  "  <?php if ($mAccess3 == '' || $mOk == 1) { ?>disabled<?php } ?> onClick="javascript:eGeneralJournal_Action(2);">
+                                                            <input type="button" name="cmdPost" class="detail1" value="  [F9] - Post "  <?php if ($mAccess6 == '' || $mOk == 1) { ?>disabled<?php } ?> onClick="javascript:eGeneralJournal_Action(4);" tabindex="14">
                                                             <input type="button" name="cmdSearch" class="detail1" value="  Search/List Record(s)  " onClick="javascript:eGeneralJournal_Action(3);">
 														</td>
 													</tr>
@@ -186,7 +185,7 @@
 										<tr bgcolor="#EBEBEB" onMouseOver="this.style.backgroundColor='#FFFFFF'" onMouseOut="this.style.backgroundColor=''">
 											<td class="detail1">&nbsp;Journal Date</td>
 											<td class="detail1" colspan="2">
- 												&nbsp;<input type="text" id="Date1" maxlength="25" size="25" class="detail1" readonly="true" value="<?php echo $mDate1 ?>"/>
+ 												<input type="text" id="Date1" maxlength="25" size="25" readonly="true" value="<?php echo $mDate1 ?>"/>
 												<img src="images/cal.gif" onClick="javascript:NewCssCal('Date1');" style="cursor:pointer"/>
 											</td>
 										</tr>
@@ -234,7 +233,7 @@
                                                             <select name="cboAccountID" class="detail1" tabindex="8" onChange="javascript:eGeneralJournal_SearchAccount_();" onKeyPress="javascript:eGeneralJournal_EnterAccountID_(event);">
 															<option value="">-Select Account-</option>
 <?php
-															include ("datasource_comp.php");
+															include ("datasource.php");
 															$mResult = $mysqli->query("Call sp_ControlAccount_Select()");
 
 															if (mysqli_num_rows($mResult) > 0)
@@ -262,7 +261,7 @@
                                                             <select name="cboSubsidiaryID" class="detail1" onKeyPress="javascript:eGeneralJournal_EnterSubsidiaryID(event);" tabindex="9">
 															<option value="">-Subsidiary Description-</option>
 <?php
-															include ("datasource_comp.php");
+															include ("datasource.php");
 															$mResult = $mysqli->query("Call sp_SubsidiaryAccount_Select('')");
 
 															if (mysqli_num_rows($mResult) > 0)
@@ -305,7 +304,7 @@
 				</tr>
 			</table>
 		</td>
-		<td align="left" background="images/bg_right.gif" valign="top">
+		<td align="left" background="../images/bg_right.gif" valign="top">
 
 		</td>
 	</tr>
@@ -314,7 +313,7 @@
 		<td valign="top">
 
 		</td>
-		<td valign="top"><img border="0" src="images/bg_bottom.gif" width=100% height="17"></td>
+		<td valign="top"><img border="0" src="../images/bg_bottom.gif" width="790" height="17"></td>
 
 		<td align="left">
 

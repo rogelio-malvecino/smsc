@@ -29,9 +29,7 @@
 	$mIncomeStatementType = '';
 	$mCashFlow = '';
 	$mCashFlowType = '';
-	$mFinanceStatementPerVoyage = '';
-	$mFinanceStatementPerVoyageType = '';
-	
+		
 	if ($_REQUEST['Start'] == 1)
 		{
 			$mResult = $mysqli->query("Call sp_ControlAccount_RecSelect('".$_REQUEST['ID']."')");
@@ -57,8 +55,6 @@
 					$mIncomeStatementType = $ado['IncomeStatementType_tx'];
 					$mCashFlow = $ado['CashFlow_yn'];
 					$mCashFlowType = $ado['CashFlowType_tx'];
-					$mFinanceStatementPerVoyage = $ado['PerVoyageFinanceStatement_yn'];
-					$mFinanceStatementPerVoyageType = $ado['PerVoyageFinanceStatementType_tx'];
 				}
 		}
 
@@ -81,8 +77,7 @@
 			$mIncomeStatementType = $_REQUEST["IncomeStatementType"];
 			$mCashFlow = $_REQUEST["CashFlow"];
 			$mCashFlowType = $_REQUEST["CashFlowType"];
-			$mFinanceStatementPerVoyage = $_REQUEST["FinanceStatementPerVoyage"];
-			$mFinanceStatementPerVoyageType = $_REQUEST["FinanceStatementPerVoyageType"];
+
 
 			$mKey = $_SESSION['S_UserID'].'!'.
 					$_SESSION['S_IPID'].'!'.
@@ -102,9 +97,7 @@
 					$mIncomeStatement.'!'.
 					$mIncomeStatementType.'!'.
 					$mCashFlow.'!'.
-					$mCashFlowType.'!'.
-					$mFinanceStatementPerVoyage.'!'.
-					$mFinanceStatementPerVoyageType;
+					$mCashFlowType;
 
 									
 									
@@ -126,8 +119,6 @@
 																	   .$mIncomeStatementType."','"
 																	   .$mCashFlow."','"
 																	   .$mCashFlowType."','"
-																	   .$mFinanceStatementPerVoyage."','"
-																	   .$mFinanceStatementPerVoyageType."','" 
 																	   .md5_encrypt($mKey,'mysystem')."')");
 
 			echo $mysqli->error;
@@ -196,7 +187,6 @@
 												<input name="hidAccountID" type="hidden" size="3" maxlength="5" value="<?php echo $mAccountID ?>">
 												<font color="#FF0000" size="+1"><?php echo $mAccountID ?></font>
                                         	</td>
-											<td></td>
 										</tr>
 										<tr bgcolor="#EBEBEB" onMouseOver="this.style.backgroundColor='#FFFFFF'" onMouseOut="this.style.backgroundColor=''">
 											<td width="135" class="detail1">&nbsp;Account Title</td>
@@ -204,7 +194,6 @@
 												&nbsp;<input name="txtAccountDesc" type="text" size="80" maxlength="80" value="<?php echo $mAccountDesc ?>" class="detail1" tabindex="2" onKeyPress="javascript:EnterKey(2,event);" onKeyUp="javascript:return gf_Save(event);">
                                                 &nbsp;<font color="#FF0000" size="+1">*</font>
 											</td>
-											<td></td>
 										</tr>
 										<tr bgcolor="#EBEBEB" onMouseOver="this.style.backgroundColor='#FFFFFF'" onMouseOut="this.style.backgroundColor=''">
 											<td width="135" class="detail1">&nbsp;Account Group</td>
@@ -228,7 +217,6 @@
                                                 </select>
                                                 &nbsp;<font color="#FF0000" size="+1">*</font>
 											</td>
-											<td></td>
 										</tr>
 										<tr bgcolor="#EBEBEB" onMouseOver="this.style.backgroundColor='#FFFFFF'" onMouseOut="this.style.backgroundColor=''">
 											<td width="135" class="detail1">&nbsp;Account Settings</td>
@@ -238,7 +226,6 @@
 											<td class="detail1" colspan="5">
 												<input name="chkNormal" type="checkbox" value="<?php echo $mNormal ?>" <?php if ($mNormal=="1") { ?>checked<?php } ?> align="absbottom" class="detail1" tabindex="5" onKeyPress="javascript:EnterKey(5,event);" onKeyUp="javascript:return gf_Save(event);">Normal Value (DR)
 											</td>
-											<td></td>
 										</tr>
 										<tr bgcolor="#EBEBEB" onMouseOver="this.style.backgroundColor='#FFFFFF'" onMouseOut="this.style.backgroundColor=''">
 											<td width="135" class="detail1">&nbsp;Book Setting</td>
@@ -260,7 +247,6 @@
                                             <td class="detail1" nowrap>
                                                 <input name="chkGJ" type="checkbox" value="<?php echo $mGJ ?>" <?php if ($mGJ=="1") { ?>checked<?php } ?> align="absbottom" class="detail1" tabindex="11" onKeyPress="javascript:EnterKey(11,event);" onKeyUp="javascript:return gf_Save(event);">General Journal
 											</td>
-											<td></td>
 										</tr>
 										<tr bgcolor="#EBEBEB" onMouseOver="this.style.backgroundColor='#FFFFFF'" onMouseOut="this.style.backgroundColor=''">
 											<td width="135" class="detail1">&nbsp;Report Setting&nbsp;</td>
@@ -302,16 +288,6 @@
 												<option value="4" <?php if ($mCashFlowType == "4") { ?>selected<?php } ?>>Investing Activities(OUT)</option>
 												<option value="5" <?php if ($mCashFlowType == "5") { ?>selected<?php } ?>>Financing Activities(IN)</option>
 												<option value="6" <?php if ($mCashFlowType == "6") { ?>selected<?php } ?>>Financing Activities(OUT)</option>
-												</select>													
-											</td>
-											<td colspan="2" class="detail1">
-                                            	<input name="chkmFinanceStatementPerVoyage" type="checkbox" value="<?php echo $mFinanceStatementPerVoyage ?>" <?php if ($mFinanceStatementPerVoyage=="1") { ?>checked<?php } ?> align="absbottom" class="detail1" tabindex="15" onKeyPress="javascript:EnterKey(15,event);" onKeyUp="javascript:return gf_Save(event);">
-												Finance Statement Per Voyage<BR>
-                                                &nbsp;<select name="cbomFinanceStatementPerVoyageType" class="detail1" tabindex="16" onKeyUp="javascript:return gf_Save(event);">
-												<option value="0" <?php if ($mFinanceStatementPerVoyageType == "0") { ?>selected<?php } ?>>-Select Groups-</option>
-												<option value="1" <?php if ($mFinanceStatementPerVoyageType == "1") { ?>selected<?php } ?>>Income</option>
-												<option value="2" <?php if ($mFinanceStatementPerVoyageType == "2") { ?>selected<?php } ?>>Expense</option>
-												
 												</select>													
 											</td>
 										</tr>									
