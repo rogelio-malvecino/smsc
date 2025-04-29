@@ -1,6 +1,6 @@
 /////////////////////////////////////////////master acccounts ///////////////////////////////////////////
 
-
+//function for controlaccount
 	function aControlAccount_CheckAccountID()
 		{
 			var mAccountID = document.frmFinancial.txtAccountID.value;
