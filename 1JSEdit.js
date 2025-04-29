@@ -1,5 +1,6 @@
 ////////////////////////////////////MASTER ACCOUNTS////////////////////////////////////////////////
-	function eControlAccount_Action(mAction)
+//fucniton
+function eControlAccount_Action(mAction)
 		{
 			if (mAction == 1)
 				{
